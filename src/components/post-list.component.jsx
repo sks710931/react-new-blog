@@ -32,7 +32,7 @@ const useStyles = makeStyles(()=> ({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginBottom: 25,
+    marginBottom: 50,
     marginTop: 35,
   },
 }));

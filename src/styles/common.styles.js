@@ -16,5 +16,20 @@ export const useCommonStyles = makeStyles(() => ({
     '&:hover':{
       backgroundColor: '#50b6e7',
     }
+  },
+  btnSecondary:{
+    all:'unset',
+    color: 'white',
+    fontWeight: 500,
+    fontSize: 16,
+    lineHeight: '50px',
+    textTransform: 'uppercase',
+    backgroundColor: 'orange',
+    width: 270,
+    textAlign: 'center',
+    borderRadius: 5,
+    '&:hover':{
+      opacity: 0.9,
+    }
   }
 }));

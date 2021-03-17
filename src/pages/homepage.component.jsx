@@ -3,6 +3,7 @@ import { Container} from "react-bootstrap";
 import { Slider } from "./../components/Slider.component";
 import { makeStyles } from "@material-ui/styles";
 import { PostList } from './../components/post-list.component';
+import { Subscribe } from "../components/subscribe.component";
 
 export const HomePage = () => {
   const classes = useStyles();
@@ -15,6 +16,7 @@ export const HomePage = () => {
       <Container>
         <PostList />
       </Container>
+      <Subscribe />
     </Fragment>
   );
 };
