@@ -4,51 +4,59 @@ import { Col } from "react-bootstrap";
 import { makeStyles } from "@material-ui/styles";
 import authorImage from "../assets/circle-cropped.png";
 import Icon from "@material-ui/core/Icon";
+import { Link } from "react-router-dom";
+import { parseDate } from "./../utils/parse-date";
 
-export const PostItem = () => {
+export const PostItem = ({ data }) => {
+  const {
+    id,
+    title,
+    subTitle,
+    author,
+    tags,
+    slug,
+    publishedAt,
+    readTime,
+    postImage,
+  } = data;
   const classes = useStyles();
+
   return (
     <Col className={classes.postContainer} sm={12} md={6}>
       <div className={classes.postBox}>
         <img
           className={classes.thumbnail}
-          src="https://images.indepth.dev/images/2021/02/Building-a-Type-Agnostic-Cache-Using-Generics-in-TypeScript.jpg"
+          src={postImage}
           alt="something"
         />
         <div className={classes.body}>
           <div className={classes.heading}>
-            <h3>I am a title, I am a title, I a title</h3>
+            <h3>{title}</h3>
           </div>
           <div className={classes.meta}>
             <div className={`${classes.flexChild} ${classes.author}`}>
               <img className={classes.authorImage} src={authorImage} alt="" />
-              <span className={classes.authorName}>Shivam Singh</span>
+              <span className={classes.authorName}>{author.authorName}</span>
             </div>
             <div className={`${classes.flexChild}`}>
-              <span className={classes.postDate}>24 Febuary 2021</span>
+              <span className={classes.postDate}>{parseDate(publishedAt)}</span>
             </div>
             <div className={`${classes.flexChild} ${classes.readTime}`}>
-              <span>8 min read</span>
+              <span>{`${readTime} min read`}</span>
             </div>
           </div>
           <div className={classes.description}>
-            <span>
-              {" "}
-              I am a description, I am a description, I am a description, I am a
-              description, I am a description, I am a description, I am a
-              description, I am a description, I am a description, I am a
-              description,{" "}
-            </span>
+            <span>{subTitle}</span>
           </div>
           <div className={classes.actions}>
-            <button>
+            <Link to={`/posts/${slug}`}>
               <span>Read More</span>
               <Icon>arrow_forward</Icon>
-            </button>
+            </Link>
           </div>
         </div>
-        <div className={classes.topTag} style={{backgroundColor: `green`}}>
-          <span>Angular</span>
+        <div className={classes.topTag} style={{ backgroundColor: `green` }}>
+          <span>{tags[1].tagName}</span>
         </div>
       </div>
     </Col>
@@ -131,25 +139,25 @@ const useStyles = makeStyles(() => ({
     marginTop: 8,
     display: "flex",
     justifyContent: "flex-end",
-    '& button':{
-      all: 'unset',
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
+    "& a": {
+      all: "unset",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
       fontWeight: 500,
-      color: 'orange',
-      '&:hover':{
-        cursor: 'pointer',
-      }
-    }
+      color: "orange",
+      "&:hover": {
+        cursor: "pointer",
+      },
+    },
   },
-  topTag:{
-    backgroundColor: '#f84a4a',
-    position: 'absolute',
+  topTag: {
+    backgroundColor: "#f84a4a",
+    position: "absolute",
     right: 10,
     top: 10,
     padding: 10,
-    color: 'white',
+    color: "white",
     borderBottomLeftRadius: 5,
-  }
+  },
 }));
