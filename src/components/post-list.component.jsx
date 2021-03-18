@@ -10,17 +10,22 @@ export const PostList = () => {
   const [slicedPosts, setSlicedPosts] = useState([]);
   const [sliceCounter, setSliceCounter] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
+  const [showMore, setShowMore] = useState(false);
 
   const showMoreHandler = () => {
     const slice = allPosts.slice(sliceCounter, sliceCounter +10);
     setSlicedPosts([...slicedPosts, ...slice]);
     setSliceCounter(sliceCounter + slice.length);
+    if(slice.length + slicedPosts.length === allPosts.length){
+      setShowMore(false);
+    }
   }
   useEffect(() => {
     axios.get(process.env.REACT_APP_ENDPOINT_URL + '/posts').then(response => {
       setAllPosts(response.data);
       if(response.data.length > 10){
         initializeSlicedPost(response.data, 10)
+        setShowMore(true)
       } else {
         setSlicedPosts(response.data);
         setSliceCounter(response.data.length)
@@ -41,9 +46,13 @@ export const PostList = () => {
           slicedPosts.map(post => (<PostItem key={post.id} data={post}/>))
         }
       </Row>
-      <div className={classes.footer}>
+      {
+        showMore && (
+          <div className={classes.footer}>
         <button onClick={showMoreHandler} className={genClasses.btnPrimary}>Show More</button>
       </div>
+        )
+      }
     </div>
   );
 };
