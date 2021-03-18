@@ -2,7 +2,6 @@ import React from "react";
 import "holderjs";
 import { Col } from "react-bootstrap";
 import { makeStyles } from "@material-ui/styles";
-import authorImage from "../assets/circle-cropped.png";
 import Icon from "@material-ui/core/Icon";
 import { Link } from "react-router-dom";
 import { parseDate } from "./../utils/parse-date";
@@ -34,7 +33,7 @@ export const PostItem = ({ data }) => {
           </div>
           <div className={classes.meta}>
             <div className={`${classes.flexChild} ${classes.author}`}>
-              <img className={classes.authorImage} src={authorImage} alt="" />
+              <img className={classes.authorImage} src={author.authorImage} alt="" />
               <span className={classes.authorName}>{author.authorName}</span>
             </div>
             <div className={`${classes.flexChild}`}>

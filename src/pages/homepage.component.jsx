@@ -4,6 +4,7 @@ import { Slider } from "./../components/Slider.component";
 import { makeStyles } from "@material-ui/styles";
 import { PostList } from './../components/post-list.component';
 import { Subscribe } from "../components/subscribe.component";
+import { Footer } from "../components/footer.component";
 
 export const HomePage = () => {
   const classes = useStyles();
@@ -17,7 +18,9 @@ export const HomePage = () => {
         <PostList />
       </Container>
       <Subscribe />
+      <Footer />
     </Fragment>
+    
   );
 };
 
