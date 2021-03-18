@@ -9,7 +9,6 @@ import { parseDate } from "./../utils/parse-date";
 
 export const PostItem = ({ data }) => {
   const {
-    id,
     title,
     subTitle,
     author,
