@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/styles";
 import React from "react";
 import { Container, Jumbotron, Media } from "react-bootstrap";
-import Icon from "@material-ui/core/icon";
+import Icon from "@material-ui/core/Icon";
 import headerImg from "../assets/circle-cropped.png";
 
 export const Header = (props) => {

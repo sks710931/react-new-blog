@@ -8,7 +8,7 @@ import Icon from "@material-ui/core/Icon";
 export const PostItem = () => {
   const classes = useStyles();
   return (
-    <Col className={classes.postContainer} xs={12} md={6}>
+    <Col className={classes.postContainer} sm={12} md={6}>
       <div className={classes.postBox}>
         <img
           className={classes.thumbnail}
