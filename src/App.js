@@ -6,6 +6,7 @@ import { NavigationBar } from "./components/navbar.component";
 import { Switch, Route } from "react-router-dom";
 import { HomePage } from './pages/homepage.component';
 import { PostPage } from './pages/post-page.component';
+import { ArchivePage } from './pages/archive-page.component';
 
 function App() {
   React.useEffect(() => {
@@ -24,7 +25,8 @@ function App() {
       <NavigationBar />
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route path='/posts/:slug' component={PostPage} />
+        <Route exact path='/posts/:slug' component={PostPage} />
+        <Route exact path='/archive' component={ArchivePage} />
       </Switch>
     </div>
   );

@@ -68,7 +68,7 @@ export const PostPage = () => {
           </Row>
         </Container>
       </div>
-      {body && body.body && <PostBody body={body.body} />}
+      {body && body.body && post && post.author && <PostBody body={body.body} author={post.author}/>}
       <Container>
         <Row>
           <Col sm={12}>
