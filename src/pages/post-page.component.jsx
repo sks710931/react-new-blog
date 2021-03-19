@@ -7,6 +7,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Footer } from "../components/footer.component";
 import { parseDate } from "./../utils/parse-date";
 import { Subscribe } from "./../components/subscribe.component";
+import { PostBody } from "../components/post-body.component";
 
 export const PostPage = () => {
   const classes = useStyles();
@@ -67,7 +68,7 @@ export const PostPage = () => {
           </Row>
         </Container>
       </div>
-      {body.body}
+      {body && body.body && <PostBody body={body.body} />}
       <Subscribe />
       <Footer />
     </Fragment>
