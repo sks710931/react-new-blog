@@ -5,6 +5,7 @@ import React from 'react';
 import { NavigationBar } from "./components/navbar.component";
 import { Switch, Route } from "react-router-dom";
 import { HomePage } from './pages/homepage.component';
+import { PostPage } from './pages/post-page.component';
 
 function App() {
   React.useEffect(() => {
@@ -22,7 +23,8 @@ function App() {
       <Header />
       <NavigationBar />
       <Switch>
-        <Route path='/' component={HomePage} />
+        <Route exact path='/' component={HomePage} />
+        <Route path='/posts/:slug' component={PostPage} />
       </Switch>
     </div>
   );
