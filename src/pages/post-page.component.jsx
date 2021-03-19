@@ -28,7 +28,6 @@ export const PostPage = () => {
                 response.data.id
             )
             .then((response2) => {
-              console.log(response2.data);
               setBody(response2.data);
             });
         }
