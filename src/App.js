@@ -7,6 +7,7 @@ import { Switch, Route } from "react-router-dom";
 import { HomePage } from './pages/homepage.component';
 import { PostPage } from './pages/post-page.component';
 import { ArchivePage } from './pages/archive-page.component';
+import { CategoryPage } from './pages/category-page.component';
 
 function App() {
   React.useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
         <Route exact path='/' component={HomePage} />
         <Route exact path='/posts/:slug' component={PostPage} />
         <Route exact path='/archive' component={ArchivePage} />
+        <Route exact path='/category/:tag' component={CategoryPage} />
       </Switch>
     </div>
   );

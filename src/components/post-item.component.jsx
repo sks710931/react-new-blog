@@ -53,9 +53,9 @@ export const PostItem = ({ data }) => {
             </Link>
           </div>
         </div>
-        <div className={classes.topTag} style={{ backgroundColor: `green` }}>
+        {tags && (<div className={classes.topTag} style={{ backgroundColor: `green` }}>
           <span>{tags[1].tagName}</span>
-        </div>
+        </div>)}
       </div>
     </Col>
   );

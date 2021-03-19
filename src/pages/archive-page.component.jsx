@@ -82,6 +82,7 @@ const useStyles = makeStyles(() => ({
   },
   container: {
     backgroundColor: "#ffff",
+    marginBottom: 15
   },
   monthHeader: {
     display: "flex",
