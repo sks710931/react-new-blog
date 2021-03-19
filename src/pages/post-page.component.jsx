@@ -59,6 +59,7 @@ export const PostPage = () => {
             </Col>
           </Row>
         </Container>
+        {body.body}
       </div>
       <Footer />
     </Fragment>
