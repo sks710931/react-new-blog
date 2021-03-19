@@ -8,6 +8,7 @@ import { Footer } from "../components/footer.component";
 import { parseDate } from "./../utils/parse-date";
 import { Subscribe } from "./../components/subscribe.component";
 import { PostBody } from "../components/post-body.component";
+import { DiscussionEmbed } from "disqus-react";
 
 export const PostPage = () => {
   const classes = useStyles();
@@ -68,6 +69,23 @@ export const PostPage = () => {
         </Container>
       </div>
       {body && body.body && <PostBody body={body.body} />}
+      <Container>
+        <Row>
+          <Col sm={12}>
+            {post && post.id && (
+              <DiscussionEmbed
+                shortname="blog-shivam-singh-com"
+                config={{
+                  url: window.location.href,
+                  identifier: post.id.toString(),
+                  title: post.title,
+                  language: "en_US", //e.g. for Traditional Chinese (Taiwan)
+                }}
+              />
+            )}
+          </Col>
+        </Row>
+      </Container>
       <Subscribe />
       <Footer />
     </Fragment>
