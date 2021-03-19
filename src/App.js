@@ -8,6 +8,7 @@ import { HomePage } from './pages/homepage.component';
 import { PostPage } from './pages/post-page.component';
 import { ArchivePage } from './pages/archive-page.component';
 import { CategoryPage } from './pages/category-page.component';
+import ScrollUpButton from "react-scroll-up-button";
 
 function App() {
   React.useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         <Route exact path='/archive' component={ArchivePage} />
         <Route exact path='/category/:tag' component={CategoryPage} />
       </Switch>
+      <ScrollUpButton ContainerClassName="scrollUp" />
     </div>
   );
 }
