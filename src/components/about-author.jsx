@@ -15,13 +15,13 @@ export const AboutAuthor = ({ author }) => {
           alt={author.authorName}
         />
         <h3>
-          <Link to={`/author/${author.id}`}>{author.authorName}</Link>
+          <Link to={`/about`}>{author.authorName}</Link>
         </h3>
         <div className={classes.desc} >
           <p >
-            Siddharth is a FullStack JavaScript Developer currently based out in
-            Sydney, Australia. He's a Google Developer Expert in Angular and Web
-            Technologies. He speaks about and teaches Angular on Udemy.
+            Shivam is a FullStack JavaScript Developer currently based out in
+            Bengaluru, India. He's a Google Developer Expert in Angular and Web
+            Technologies. He speaks about and teaches Angular on his blog.
           </p>
         </div>
       </Col>
