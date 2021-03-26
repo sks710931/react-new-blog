@@ -9,8 +9,8 @@ import { parseDate } from "./../utils/parse-date";
 import { Subscribe } from "./../components/subscribe.component";
 import { PostBody } from "../components/post-body.component";
 import { DiscussionEmbed } from "disqus-react";
-import {Link} from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import { MetaTags } from "react-meta-tags";
 export const PostPage = () => {
   const classes = useStyles();
   const { slug } = useParams();
@@ -37,6 +37,15 @@ export const PostPage = () => {
   }, []);
   return (
     <Fragment>
+      <MetaTags>
+        <title>{`${post.title} | Shivam Singh's Blog`}</title>
+        <meta name="description" content={post.subTitle} />
+        <meta
+          property="og:title"
+          content={`${post.title} | Shivam Singh's Blog`}
+        />
+        <meta property="og:image" content={post.postImage} />
+      </MetaTags>
       <div className={classes.postHeader}>
         <Container>
           <Row>
@@ -45,14 +54,20 @@ export const PostPage = () => {
               <p className={classes.postSubTitle}>{post.subTitle}</p>
             </Col>
             <Col style={{ paddingLeft: 0, paddingRight: 0 }} sm={12} md={5}>
-              <img className={classes.postImage} src={post.postImage} alt={post.title} />
+              <img
+                className={classes.postImage}
+                src={post.postImage}
+                alt={post.title}
+              />
             </Col>
             <Col className={classes.metaContainer} sm={12} md={6}>
               <div className={classes.metaRow}>
                 {post &&
                   post.tags &&
                   post.tags.map((tag) => (
-                    <Link to={`/category/${tag.tagName}`}><span className={classes.tags}>{tag.tagName}</span></Link>
+                    <Link to={`/category/${tag.tagName}`}>
+                      <span className={classes.tags}>{tag.tagName}</span>
+                    </Link>
                   ))}
               </div>
               <div className={classes.metaRow}>
@@ -69,7 +84,9 @@ export const PostPage = () => {
           </Row>
         </Container>
       </div>
-      {body && body.body && post && post.author && <PostBody body={body.body} author={post.author}/>}
+      {body && body.body && post && post.author && (
+        <PostBody body={body.body} author={post.author} />
+      )}
       <Container>
         <Row>
           <Col sm={12}>
