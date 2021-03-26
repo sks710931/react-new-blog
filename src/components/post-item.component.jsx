@@ -22,19 +22,25 @@ export const PostItem = ({ data }) => {
   return (
     <Col className={classes.postContainer} sm={12} md={6}>
       <div className={classes.postBox}>
-        <img
-          className={classes.thumbnail}
-          src={postImage}
-          alt="something"
-        />
+        <Link to={`/posts/${slug}`}>
+          <img className={classes.thumbnail} src={postImage} alt={title} />
+        </Link>
         <div className={classes.body}>
           <div className={classes.heading}>
-            <h3>{title}</h3>
+            <Link to={`/posts/${slug}`}>
+              <h3>{title}</h3>
+            </Link>
           </div>
           <div className={classes.meta}>
             <div className={`${classes.flexChild} ${classes.author}`}>
-              <img className={classes.authorImage} src={author.authorImage} alt="" />
-              <span className={classes.authorName}>{author.authorName}</span>
+              <Link to={`/about`}>
+                <img
+                  className={classes.authorImage}
+                  src={author.authorImage}
+                  alt={author.authorName}
+                />
+              </Link>
+              <Link to={`/about`}><span className={classes.authorName}>{author.authorName}</span></Link>
             </div>
             <div className={`${classes.flexChild}`}>
               <span className={classes.postDate}>{parseDate(publishedAt)}</span>
@@ -53,9 +59,13 @@ export const PostItem = ({ data }) => {
             </Link>
           </div>
         </div>
-        {tags && (<div className={classes.topTag} style={{ backgroundColor: `green` }}>
-          <span>{tags[1].tagName}</span>
-        </div>)}
+        {tags && (
+          <div className={classes.topTag} style={{ backgroundColor: `green` }}>
+            <Link to={`/category/${tags[1].tagName}`}>
+              <span>{tags[1].tagName}</span>
+            </Link>
+          </div>
+        )}
       </div>
     </Col>
   );
@@ -84,6 +94,10 @@ const useStyles = makeStyles(() => ({
     overflow: "hidden",
     whiteSpace: "npwrap",
     textOverflow: "ellipsis",
+    "& a": {
+      textDecoration: "none",
+      color: "white",
+    },
     "& h3": {
       color: "#1d86b8",
       "&:hover": {
@@ -111,6 +125,10 @@ const useStyles = makeStyles(() => ({
   },
   author: {
     width: "150%",
+    "& a": {
+      textDecoration: "none",
+      color: "white",
+    },
   },
   authorImage: {
     borderRadius: "50%",
@@ -157,5 +175,9 @@ const useStyles = makeStyles(() => ({
     padding: 10,
     color: "white",
     borderBottomLeftRadius: 5,
+    "& a": {
+      textDecoration: "none",
+      color: "white",
+    },
   },
 }));
