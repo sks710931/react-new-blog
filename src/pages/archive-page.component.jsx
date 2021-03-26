@@ -7,6 +7,7 @@ import { months } from "../data/months";
 import Icon from "@material-ui/core/Icon";
 import axios from "axios";
 import { parseDate } from "./../utils/parse-date";
+import { Link } from "react-router-dom";
 
 export const ArchivePage = () => {
   const [archives, setArchives] = useState();
@@ -56,7 +57,7 @@ export const ArchivePage = () => {
                                 {month.posts.map((post) => (
                                   <div className="row">
                                     <span className="date">{parseDate(post.publishedAt)}</span>
-                                    <span className="title">{post.title}</span>
+                                    <Link to={`/posts/${post.slug}`}><span className="title">{post.title}</span></Link>
                                   </div>
                                 ))}
                               </Card.Body>
@@ -113,6 +114,10 @@ const useStyles = makeStyles(() => ({
     paddingLeft: 80,
     "& .row": {
       marginBottom: 10,
+      "& a": {
+        textDecoration: "none",
+        color: "white",
+      },
       '& .date':{
         color: 'orange',
       },
