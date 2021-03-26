@@ -30,11 +30,13 @@ export const NavigationBar = (props) => {
               Contact
             </Link>
           </Nav>
-          <Nav>
-            <Nav.Link className={classes.navLinkRight} href="#home">
-              Sign In/Sign Up
-            </Nav.Link>
-          </Nav>
+          {false && (
+            <Nav>
+              <Nav.Link className={classes.navLinkRight} href="#home">
+                Sign In/Sign Up
+              </Nav.Link>
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
