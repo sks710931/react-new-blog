@@ -22,7 +22,7 @@ export const ContactPage = () => {
         email,
         subject,
         message,
-      })
+      }) 
       .then((response) => {
         if (response.data) {
           alert("Message Sent");

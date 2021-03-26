@@ -1,13 +1,34 @@
-import React from "react";
+/* eslint-disable react/jsx-no-target-blank */
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Container, Row, Col } from "react-bootstrap";
 import { TextBox } from "./input/text-box.component";
 import { useCommonStyles } from "./../styles/common.styles";
 import Icon from "@material-ui/core/Icon";
+import axios from "axios";
 
 export const Subscribe = () => {
   const classes = useStyles();
   const genClasses = useCommonStyles();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const handleFormSubmit = () => {
+    axios
+      .post(process.env.REACT_APP_ENDPOINT_URL + "/posts/subscriber/add", {
+        name,
+        email,
+        areaOfInterest: subject,
+      })
+      .then((response) => {
+        if (response.data) {
+          alert("Subscribed Sucessfully!");
+          setName("");
+          setEmail("");
+          setSubject("");
+        }
+      });
+  };
   return (
     <div className={classes.parent}>
       <Container>
@@ -21,13 +42,29 @@ export const Subscribe = () => {
               Get the latest coverage of <b>advanced</b> web development
               straight into your inbox. Twice a month.
             </p>
-            <p className={`${classes.smallText} ${classes.noMargin}`}>Follow Us</p>
+            <p className={`${classes.smallText} ${classes.noMargin}`}>
+              Follow Us
+            </p>
             <div className={classes.inputRow}>
-              <Icon className={`fab fa-linkedin ${classes.icon}`} />
-              <Icon className={`fab fa-github ${classes.icon}`} />
-              <Icon className={`fab fa-twitter ${classes.icon}`} />
-              <Icon className={`fab fa-youtube ${classes.icon}`} />
-              <Icon className={`fab fa-instagram ${classes.icon}`} />
+              <a target="_blank" href="https://www.linkedin.com/in/sks71093/">
+                <Icon className={`fab fa-linkedin ${classes.icon}`} />
+              </a>
+
+              <a target="_blank" href="https://github.com/sks710931">
+                <Icon className={`fab fa-github ${classes.icon}`} />
+              </a>
+              <a target="_blank" href="https://twitter.com/sks71093">
+                <Icon className={`fab fa-twitter ${classes.icon}`} />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.youtube.com/channel/UCgn9Vr0m5hRHCJd6IReuhzw"
+              >
+                <Icon className={`fab fa-youtube ${classes.icon}`} />
+              </a>
+              <a target="_blank" href="https://www.instagram.com/sks71093/">
+                <Icon className={`fab fa-instagram ${classes.icon}`} />
+              </a>
             </div>
           </Col>
           <Col xs={12} md={6}>
@@ -42,6 +79,8 @@ export const Subscribe = () => {
                   displayType="flex"
                   paddingType="paddingRight"
                   spacing={10}
+                  value={name}
+                  onTextChange={(text) => setName(text)}
                 />
                 <TextBox
                   label="Email"
@@ -52,6 +91,8 @@ export const Subscribe = () => {
                   displayType="flex"
                   paddingType="paddingLeft"
                   spacing={10}
+                  value={email}
+                  onTextChange={(text) => setEmail(text)}
                 />
               </div>
               <div className={classes.inputRow}>
@@ -61,10 +102,17 @@ export const Subscribe = () => {
                   decorationColor="orange"
                   placeholder="E.g. Javascript, Angular, React.."
                   displayType="flex"
+                  value={subject}
+                  onTextChange={(text) => setSubject(text)}
                 />
               </div>
               <div className={classes.inputRow}>
-                <button className={genClasses.btnSecondary}>Subscribe</button>
+                <button
+                  onClick={handleFormSubmit}
+                  className={genClasses.btnSecondary}
+                >
+                  Subscribe
+                </button>
               </div>
             </div>
           </Col>
@@ -116,5 +164,5 @@ const useStyles = makeStyles(() => ({
   },
   noMargin: {
     margin: 0,
-  }
+  },
 }));
