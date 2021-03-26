@@ -26,7 +26,7 @@ export const NavigationBar = (props) => {
             <Link className={`${classes.navLink} nav-link`} to="">
               About Me
             </Link>
-            <Link className={`${classes.navLink} nav-link`} to="">
+            <Link className={`${classes.navLink} nav-link`} to="/contact">
               Contact
             </Link>
           </Nav>

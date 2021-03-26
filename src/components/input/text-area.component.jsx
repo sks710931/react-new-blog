@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Icon from "@material-ui/core/Icon";
 
-export const TextBox = ({
+export const TextArea = ({
   name,
   label,
   placeholder,
@@ -31,17 +31,16 @@ export const TextBox = ({
       marginRight: 15
     },
     input: {
-      lineHeight: "50px",
       outline: "none",
       paddingLeft: 15,
       paddingRight: 30,
       border: "1px solid #d5d5d5",
-      height: 50,
+      height: 200,
       "&:focus": {
         borderBottom: `${
           decorationColor ? "3px solid " + decorationColor : "3px solid #1d86b8"
         }`,
-        height: 50,
+        height: 200,
       },
     },
     icon: {
@@ -58,7 +57,7 @@ export const TextBox = ({
       <label className={classes.label} htmlFor={name}>
         {label}
       </label>
-      <input
+      <textarea
         className={classes.input}
         autoComplete={autoComplete ? autoComplete: `off`}
         name={name}
